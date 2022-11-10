@@ -10,7 +10,5 @@ app.get('/hola', (req, res) => {
 
 const PORT = 3000;
 const server = app.listen(PORT, () => {
-    console.log(`Servidor express escuchando en el puerto ${server.address().port}`)
+    console.log(`Servidor express escuchando en el puerto ${PORT}`)
 });
-
-server.on('error', error => console.log(`Error en servidor ${error}`));
