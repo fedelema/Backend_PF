@@ -1,0 +1,42 @@
+[
+  {
+    "timestamp": 1660842608818,
+    "nombre": "FERNET",
+    "descripcion": "Botella de Fernet Branca",
+    "precio": "1000",
+    "foto": "https://cdn4.iconfinder.com/data/icons/cocktails-11/504/cuba-libre-rum-cocktail-alcoholic-128.png",
+    "stock": "10",
+    "id": 1,
+    "sku": "1-FERNET-1660842608818"
+  },
+  {
+    "timestamp": 1660842633378,
+    "nombre": "GIN",
+    "descripcion": "Botella de Gin Bombay",
+    "precio": 3400,
+    "foto": "https://cdn0.iconfinder.com/data/icons/beverage-43/128/gin-tonic-cocktail-cold-beverage-128.png",
+    "stock": 10,
+    "id": 2,
+    "sku": "2-GIN-1660842633378"
+  },
+  {
+    "timestamp": 1660842660641,
+    "nombre": "CERVEZA",
+    "descripcion": "Botella de Cerveza Stella",
+    "precio": "250",
+    "foto": "https://cdn1.iconfinder.com/data/icons/drink-beverage/512/26-beer-bottle-glass-drink-128.png",
+    "stock": "10",
+    "id": 3,
+    "sku": "3-CERVEZA-1660842660641"
+  },
+  {
+    "timestamp": 1660842707946,
+    "nombre": "VODKA",
+    "descripcion": "Botella de Vodka Smirnoff",
+    "precio": "850",
+    "foto": "https://cdn0.iconfinder.com/data/icons/beverage-43/128/tequila-liquor-margarita-vodka-bar-128.png",
+    "stock": "10",
+    "id": 4,
+    "sku": "4-VODKA-1660842707946"
+  }
+]

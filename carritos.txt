@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp_carrito": 1660849475826,
+    "productos": [
+      {
+        "timestamp": 1660842608818,
+        "nombre": "FERNET",
+        "descripcion": "Botella de Fernet Branca",
+        "precio": "1000",
+        "foto": "https://cdn4.iconfinder.com/data/icons/cocktails-11/504/cuba-libre-rum-cocktail-alcoholic-128.png",
+        "stock": "10",
+        "id": 1,
+        "sku": "1-FERNET-1660842608818"
+      },
+      {
+        "timestamp": 1660842660641,
+        "nombre": "CERVEZA",
+        "descripcion": "Botella de Cerveza Stella",
+        "precio": "250",
+        "foto": "https://cdn1.iconfinder.com/data/icons/drink-beverage/512/26-beer-bottle-glass-drink-128.png",
+        "stock": "10",
+        "id": 3,
+        "sku": "3-CERVEZA-1660842660641"
+      }
+    ],
+    "id": 1
+  },
+  {
+    "timestamp_carrito": 1660857363153,
+    "productos": [],
+    "id": 2
+  },
+  {
+    "timestamp_carrito": 1660857489304,
+    "productos": [],
+    "id": 3
+  }
+]
