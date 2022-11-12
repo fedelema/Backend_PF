@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const { productosDao }  = require('../src/daos/index');
+const { productosDao }  = require('../src/daos/indexDaos');
 const productos = productosDao;
 
 const esAdmin = true;
