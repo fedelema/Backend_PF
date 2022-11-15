@@ -17,7 +17,7 @@ function traerProductos(productos) {
 }
 
 function verProductos() {
-    location.href = '/api/productos'
+    res.redirect('/api/productos');
 }
 
 function verCarrito(e) {
