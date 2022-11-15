@@ -11,8 +11,13 @@ const mongodb = {
         serverSelectionTimeoutMS: 5000,
     }
 }
+const mongoLocal = {
+    client: 'mongodb',
+    cnxStr: process.env.MONGO_LOCAL_CNXSTR || 'mongodb://localhost:27017/sessions26'
+};
 
 module.exports = {
     DB,
-    mongodb
+    mongodb,
+    mongoLocal
 }

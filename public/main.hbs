@@ -1,0 +1,20 @@
+            {{#if productos.length}}
+            <h2 class="titulo-prod">Productos cargados - Cantidad: {{productos.length}}</h2>
+            {{#each productos}}
+            <div class="prod container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src={{this.foto}} alt={{this.nombre}}>
+                    </div>
+                    <div class="col-md-6 detalle-prod">
+                        <h2>{{this.nombre}}</h2>
+                        <h3><b>Precio: $ {{this.precio}}</b></h3>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="no-prod">
+                <h2>No hay productos</h2>
+            </div>
+            {{/if}}

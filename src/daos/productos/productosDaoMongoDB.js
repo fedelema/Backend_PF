@@ -11,7 +11,7 @@ const productoSchema = new Schema({
 
 class ProductosDaoMongoDB extends ContenedorMongoDB {
     constructor() {
-        super('ecommerce.productos', productoSchema)
+        super('productos', productoSchema)
     }
 }
 

@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const { model, Types } = require('mongoose');
 const config = require('../../config');
 
-async function main() {
-    await mongoose.connect(config.mongodb.cnxStr, config.mongodb.options);
-}
-main();
-
 class ContenedorMongoDB {
     constructor(_coll, _schema) {
         this.model = model(_coll, _schema);

@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = Router();
+const { authMiddleware } = require('../auth/index');
 
 const { carritosDao, productosDao }  = require('../src/daos/indexDaos');
 const carritos = carritosDao;
@@ -15,9 +16,10 @@ function soloAdmins(req, res, next) {
     }
 }
 
-router.post('/', async (req, res) => {
+router.post('/', authMiddleware, async (req, res) => {
     const nuevoCarrito = {
         timestamp_carrito: Date.now(),
+        comprador: req.user.username,
         productos: []
     }
     let nuevoId = await carritos.save(nuevoCarrito);
@@ -25,20 +27,20 @@ router.post('/', async (req, res) => {
     res.send(`Carrito creado con éxito con id:${nuevoId}`)
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authMiddleware, (req, res) => {
     const id = req.params.id;
     carritos.deleteById(id);
     
     res.send(`Carrito con id:${id} eliminado con éxito`)
 });
 
-router.get('/:id/productos', async (req, res) => {
+router.get('/:id/productos', authMiddleware, async (req, res) => {
     const id = req.params.id;
     const carritoBuscado = await carritos.getById(id);
     res.send(carritoBuscado.productos);
 });
 
-router.post('/:id/productos/:id_prod', async (req, res) => {
+router.post('/:id/productos/:id_prod', authMiddleware, async (req, res) => {
     const id = req.params.id;
     const id_prod = req.params.id_prod;
     const carrito = await carritos.getById(id);
@@ -49,7 +51,7 @@ router.post('/:id/productos/:id_prod', async (req, res) => {
     res.send(`Producto con id:${id_prod} agregado con éxito al carrito con id:${id}`)
 });
 
-router.delete('/:id/productos/:id_prod', (req, res) => {
+router.delete('/:id/productos/:id_prod', authMiddleware, (req, res) => {
     const id = req.params.id;
     const id_prod = req.params.id_prod;
     const carrito = carritos.getById(id);

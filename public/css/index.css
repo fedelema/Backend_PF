@@ -1,0 +1,79 @@
+form {
+    text-align: center;
+    margin: 20px;
+}
+
+form .input {
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+}
+
+form button {
+    margin: 20px;
+    width: 30%;
+}
+
+.titulo-prod {
+    text-align: center;
+    padding: 20px;
+}
+
+.prod {
+    background-color: lightgray;
+    border: solid;
+    border-color: black;
+    border-width: 1 px;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.prod img {
+    width: 100%;
+    background-color: white;
+    border: solid;
+    border-color: black;
+    border-width: 1 px;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.prod .detalle-prod {
+    align-self: center;
+}
+
+.no-prod {
+    background-color: lightcoral;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    align-self: center;
+}
+
+.msj {
+    margin: 50px;
+}
+
+.form-login {
+    background-color: lightgray;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}
+
+.form-login button {
+    width: 10%;
+}
+
+.form-login input {
+    margin: 20px;
+    padding: 10px;
+    width: 20%;
+}
