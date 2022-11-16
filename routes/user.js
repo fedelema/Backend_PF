@@ -3,6 +3,8 @@ const router = new Router();
 const passport = require('passport');
 const path = require('path');
 const { authMiddleware } = require('../auth/index');
+const { carritosDao }  = require('../src/daos/indexDaos');
+const carritos = carritosDao;
 
 router.get("/", (req, res) => {
     res.redirect("/home");
@@ -12,6 +14,14 @@ router.post("/signup", passport.authenticate("signup", {
     failureRedirect: "/signup",
     }) , (req, res) => {  
         req.session.user = req.user;
+        const comprador = req.user.username;
+        const nuevoCarrito = {
+            timestamp_carrito: Date.now(),
+            comprador: comprador,
+            productos: []
+        }
+        let nuevoId = carritos.save(nuevoCarrito);
+    
         res.redirect("/home");
     }
 );
