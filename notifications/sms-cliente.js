@@ -8,19 +8,17 @@ const sid = "AC624536f4f9e522ed6368035ab46007c6";
 const token = "955f198c41c8b9cd2e5ebf7191d1fcdb";
 const client = twilio(sid, token);
 
-const smsOptions = {
-    from: "+18087364996",
-    to: PHONE_NUMBER,
-    body: "Su pedido ha sido recibido y se encuentra en proceso"
-}
-
-async function send() {
+async function smsCliente() {
     try {
-        const info = await client.messages.create(smsOptions);
+        const info = await client.messages.create({
+            from: "+18087364996",
+            to: PHONE_NUMBER,
+            body: "Su pedido ha sido recibido y se encuentra en proceso"
+        });
         console.log(info);
     } catch(err) {
         console.log(err)
     }
 }
 
-send();
+module.exports = smsCliente;

@@ -1,9 +1,10 @@
 const { Router } = require('express');
 const router = Router();
 const { authMiddleware } = require('../auth/index');
+const path = require('path');
 
 const { productosDao }  = require('../src/daos/indexDaos');
-const productos = productosDao;
+let productos = productosDao;
 
 const esAdmin = true;
 
@@ -24,9 +25,19 @@ router.get('/:id?', authMiddleware, async (req, res) => {
         res.send(await productos.getAll());
         return
     }
+/*     const id = req.params.id;
+    if(id) {
+        productos = await productos.getById(id)
+        res.render(path.resolve('public/productos.ejs'), {productos: productos});
+        return
+    } else {
+        productos = await productos.getAll()
+        res.render(path.resolve('public/productos.ejs'), {productos: productos});
+        return
+    } */
 });
 
-router.post('/', authMiddleware, soloAdmins, async (req, res) => {
+router.post('/', soloAdmins, async (req, res) => {
     const body = await req.body;
     if(body.nombre && body.descripcion && body.precio && body.foto && body.stock) {
         const nuevoProd = {
@@ -43,7 +54,7 @@ router.post('/', authMiddleware, soloAdmins, async (req, res) => {
     }
 });
 
-router.put('/:id', authMiddleware, soloAdmins, async (req, res) => {
+router.put('/:id', soloAdmins, async (req, res) => {
     const id = req.params.id;
     const body = await req.body;
     if(body.nombre && body.descripcion && body.precio && body.foto && body.stock) {
@@ -58,7 +69,7 @@ router.put('/:id', authMiddleware, soloAdmins, async (req, res) => {
     res.send(`Producto con id:${id} actualizado con éxito`)
 });
 
-router.delete('/:id', authMiddleware, soloAdmins, (req, res) => {
+router.delete('/:id', soloAdmins, (req, res) => {
     const id = req.params.id;
     productos.deleteById(id);
     res.send(`Producto con id:${id} eliminado con éxito`)

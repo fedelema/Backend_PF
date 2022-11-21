@@ -1,7 +1,10 @@
-const Producto = require('../../src/contenedores/contenedorArchivo');
-const productos = new Producto('../../productos.txt');
+const { carritosDao, productosDao }  = require('../../src/daos/indexDaos');
+const carritos = carritosDao;
+const productos = productosDao;
+const path = require('path');
+const mailPedido = require('../../notifications/mail-pedido');
 
-traerProductos(productos).then(html => {
+/* traerProductos(productos).then(html => {
     document.getElementById('prod-cargados').innerHTML = html
 });
 
@@ -14,12 +17,17 @@ function traerProductos(productos) {
             const html = template({ productos })
             return html
         })
-}
+} */
 
 function verProductos() {
-    res.redirect('/api/productos');
+    location.href = `/api/productos`
+
 }
 
 function verCarrito(e) {
     location.href = `/api/carritos/${e}/productos`
+}
+
+function comprarCarrito(e) {
+    location.href = `/api/carritos/${e}/productos/comprar`
 }

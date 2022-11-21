@@ -9,7 +9,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const { comparePassword, hashPassword } = require('./utils/password');
 const { mongoose, Types } = require('mongoose');
 const path = require('path');
-const { authMiddleware } = require('./auth/index');
+// const { authMiddleware } = require('./auth/index');
 const logger = require('./logger/logger_config');
 const mailRegistro = require('./notifications/mail-admin');
 

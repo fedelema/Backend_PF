@@ -1,8 +1,11 @@
 const { Router } = require('express');
 const router = Router();
 const { authMiddleware } = require('../auth/index');
-
+const path = require('path');
+const mailPedido = require('../notifications/mail-pedido');
+const wpPedido = require('../notifications/wp-pedido');
 const { carritosDao, productosDao }  = require('../src/daos/indexDaos');
+
 const carritos = carritosDao;
 const productos = productosDao;
 
@@ -16,10 +19,11 @@ function soloAdmins(req, res, next) {
     }
 }
 
-router.post('/', authMiddleware, async (req, res) => {
+router.post('/', async (req, res) => {
+    const comprador = req.body.comprador
     const nuevoCarrito = {
         timestamp_carrito: Date.now(),
-        comprador: req.user.username,
+        comprador: comprador,
         productos: []
     }
     let nuevoId = await carritos.save(nuevoCarrito);
@@ -27,7 +31,7 @@ router.post('/', authMiddleware, async (req, res) => {
     res.send(`Carrito creado con éxito con id:${nuevoId}`)
 });
 
-router.delete('/:id', authMiddleware, (req, res) => {
+router.delete('/:id', (req, res) => {
     const id = req.params.id;
     carritos.deleteById(id);
     
@@ -40,7 +44,15 @@ router.get('/:id/productos', authMiddleware, async (req, res) => {
     res.send(carritoBuscado.productos);
 });
 
-router.post('/:id/productos/:id_prod', authMiddleware, async (req, res) => {
+router.get('/:id/productos/comprar', authMiddleware, async (req, res) => {
+    const id = req.params.id;
+    const carritoBuscado = await carritos.getById(id);
+    mailPedido(id, carritoBuscado.productos);
+    wpPedido(id);
+    res.redirect(path.resolve('public/carrito.html'));
+});
+
+router.post('/:id/productos/:id_prod', async (req, res) => {
     const id = req.params.id;
     const id_prod = req.params.id_prod;
     const carrito = await carritos.getById(id);
@@ -51,7 +63,7 @@ router.post('/:id/productos/:id_prod', authMiddleware, async (req, res) => {
     res.send(`Producto con id:${id_prod} agregado con éxito al carrito con id:${id}`)
 });
 
-router.delete('/:id/productos/:id_prod', authMiddleware, (req, res) => {
+router.delete('/:id/productos/:id_prod', (req, res) => {
     const id = req.params.id;
     const id_prod = req.params.id_prod;
     const carrito = carritos.getById(id);
