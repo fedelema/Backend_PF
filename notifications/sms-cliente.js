@@ -11,11 +11,11 @@ const client = twilio(sid, token);
 async function smsCliente() {
     try {
         const info = await client.messages.create({
-            from: "+18087364996",
-            to: PHONE_NUMBER,
-            body: "Su pedido ha sido recibido y se encuentra en proceso"
+            body: "Su pedido ha sido recibido y se encuentra en proceso",
+            from: '+18087364996',
+            to: '+541141601105'
+            //to: ${comprador.telefono}
         });
-        console.log(info);
     } catch(err) {
         console.log(err)
     }

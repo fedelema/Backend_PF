@@ -17,13 +17,19 @@ const transporter = nodemailer.createTransport({
 
 async function mailPedido(comprador, productos) {
     try {
+        let totalProd = ``;
+        for(i=0; i<productos.length; i++) {
+            const nuevoProd = `
+                ${productos[i].nombre} (${productos[i].descripcion}) - Precio: $${productos[i].precio}
+                `
+            totalProd += nuevoProd;
+        }
         const info1 = await transporter.sendMail({
             from: "Servidor PF",
             to: MY_EMAIL_ADDRESS,
             subject: `Nuevo Pedido de ${comprador}`,
-            html: `Productos comprados: ${productos}`
+            text: `Productos comprados: ${totalProd}`
         });
-        console.log(info1);
     } catch (err) {
         console.log(err);
     }

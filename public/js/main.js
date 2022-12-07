@@ -20,14 +20,19 @@ function traerProductos(productos) {
 } */
 
 function verProductos() {
-    location.href = `/api/productos`
+    //location.href = `/api/productos`
+    window.location.replace(`/api/productos`)
 
 }
 
 function verCarrito(e) {
-    location.href = `/api/carritos/${e}/productos`
+    //location.href = `/api/carritos/${e}/productos`
+    //window.redirect = `/api/carritos/${e}/productos`
+    window.location.replace(`/api/carritos/${e}/productos`)
 }
 
 function comprarCarrito(e) {
-    location.href = `/api/carritos/${e}/productos/comprar`
+    //location.href = `/api/carritos/${e}/productos/comprar`
+    //window.location = `/api/carritos/${e}/productos/comprar`
+    window.location.replace(`/api/carritos/${e}/productos/comprar`)
 }

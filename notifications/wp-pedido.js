@@ -12,10 +12,10 @@ async function wpPedido(comprador) {
     try {
         const info = await client.messages.create({
             from: "whatsapp:+14155238886",
-            to: `${MY_PHONE}`,
+            to: MY_PHONE,
             body: `Nuevo pedido de ${comprador}`
         });
-        console.log(info);
+        console.log('WHATSAPP DE TWILIO', info);
     } catch(err) {
         console.log(err)
     }

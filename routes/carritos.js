@@ -4,6 +4,7 @@ const { authMiddleware } = require('../auth/index');
 const path = require('path');
 const mailPedido = require('../notifications/mail-pedido');
 const wpPedido = require('../notifications/wp-pedido');
+const smsCliente = require('../notifications/sms-cliente');
 const { carritosDao, productosDao }  = require('../src/daos/indexDaos');
 
 const carritos = carritosDao;
@@ -47,9 +48,10 @@ router.get('/:id/productos', authMiddleware, async (req, res) => {
 router.get('/:id/productos/comprar', authMiddleware, async (req, res) => {
     const id = req.params.id;
     const carritoBuscado = await carritos.getById(id);
-    mailPedido(id, carritoBuscado.productos);
-    wpPedido(id);
-    res.redirect(path.resolve('public/carrito.html'));
+    const mail = await mailPedido(id, carritoBuscado.productos);
+    const sms = await smsCliente();
+    //wpPedido(id);
+    res.sendFile(path.resolve('public/carrito.html'));
 });
 
 router.post('/:id/productos/:id_prod', async (req, res) => {
