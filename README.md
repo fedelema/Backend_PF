@@ -67,38 +67,41 @@ Todos comienzan con "api/productos"
     - "/:id": elimina un producto con su id  
 
 ### Carritos 
-Todos comienzan con "api/carritos"
-    **GET**
-    - "/:id/productos": trae los productos de un carrito con su id
-    **POST**
-    - "/": crea un nuevo carrito. Es requerido el comprador
-    - "/:id/productos/:id_prod": agrega un producto a un carrito, con sus respectivos id. Siempre que se agrega un producto, se hace un chequeo para evitar duplicados (si ya está en el carrito, se aumenta en 1 la cantidad). Hay un control para que la cantidad de un producto no supere al stock del mismo
-    **DELETE**
-    - "/:id": elimina un carrito con su id
-    - "/:id/productos/:id_prod": elimina un producto de un carrito
+Todos comienzan con "api/carritos"  
+
+**GET**  
+    - "/:id/productos": trae los productos de un carrito con su id  
+**POST**  
+    - "/": crea un nuevo carrito. Es requerido el comprador  
+    - "/:id/productos/:id_prod": agrega un producto a un carrito, con sus respectivos id. Siempre que se agrega un producto, se hace un chequeo para evitar duplicados (si ya está en el carrito, se aumenta en 1 la cantidad). Hay un control para que la cantidad de un producto no supere al stock del mismo  
+**DELETE**  
+    - "/:id": elimina un carrito con su id  
+    - "/:id/productos/:id_prod": elimina un producto de un carrito  
 
 ### Ordenes
-Todos comienzan con "api/ordenes"
-    **GET**
-    - "/": trae todas las órdenes
-    - "/:id": trae una orden con su id
-    - "/comprador/:comprador": trae todas las órdenes de un cliente, con su mail
-    **POST**
-    - "/:id/comprar": genera una nueva orden, con el id del carrito que se quiere comprar. Se envía un mail al administrador con el resumen del pedido (también se enviaría un SMS al cliente indicando que el pedido fue recibido y un WhatsApp al administrador indicando que hubo un pedido del cliente, pero están comentados momentaneamente por motivos de la configuración de Twilio). Se calcula el precio total de la orden. Se vacía el carrito para futuras compras del cliente
-    **DELETE**
-    - "/:id": elimina una orden con su id
+Todos comienzan con "api/ordenes"  
+
+**GET**  
+    - "/": trae todas las órdenes  
+    - "/:id": trae una orden con su id  
+    - "/comprador/:comprador": trae todas las órdenes de un cliente, con su mail  
+**POST**  
+    - "/:id/comprar": genera una nueva orden, con el id del carrito que se quiere comprar. Se envía un mail al administrador con el resumen del pedido (también se enviaría un SMS al cliente indicando que el pedido fue recibido y un WhatsApp al administrador indicando que hubo un pedido del cliente, pero están comentados momentaneamente por motivos de la configuración de Twilio). Se calcula el precio total de la orden. Se vacía el carrito para futuras compras del cliente  
+**DELETE**  
+    - "/:id": elimina una orden con su id  
 
 ### Users
 Se utilizaron estrategias de passport en el login y el signup. En el login se verifica que coincida la contraseña; mientras que en el signup se verifica que el usuario no exista.
-Cuando se registra un nuevo usuario, se envía un mail al administrador con todos los datos del mismo
-    **GET**
-    - "/login": trae la vista con el formulario del login
-    - "/signup": trae la vista con el formulario del signup
-    - "/home": trae la vista del home. Si el usuario no está autenticado, redirige al login
-    - "/logout": trae la vista del logout cuando se cierra una sesión. Si el usuario no está autenticado, redirige al login
-    **POST**
-    - "/login": inicio de sesión de un usuario. Se redirige al home
-    - "/signup": se registra un nuevo usuario. Al registrarse, también se le crea un carrito. Se redirige al home
+Cuando se registra un nuevo usuario, se envía un mail al administrador con todos los datos del mismo  
+
+**GET**  
+    - "/login": trae la vista con el formulario del login  
+    - "/signup": trae la vista con el formulario del signup  
+    - "/home": trae la vista del home. Si el usuario no está autenticado, redirige al login  
+    - "/logout": trae la vista del logout cuando se cierra una sesión. Si el usuario no está autenticado, redirige al login  
+**POST**  
+    - "/login": inicio de sesión de un usuario. Se redirige al home  
+    - "/signup": se registra un nuevo usuario. Al registrarse, también se le crea un carrito. Se redirige al home  
 
 
 ## 3) Ejemplos de la DB para pruebas
