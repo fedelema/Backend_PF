@@ -53,19 +53,21 @@ En este proyecto se utilizan las siguientes colecciones de Mongo DB:
 ## 2) Endpoints
 Los endpoints de los users se pueden probar en el front; mientras que los de productos, carritos y ordenes se hacen desde el back
 
-### Productos (todos comienzan con "api/productos")
+### Productos 
+Todos comienzan con "api/productos"  
 
-**GET**
-    - "/:id?": en caso de que haya id busca el producto con dicho id, si no trae todos los productos
-    - "/categoria/:cat": busca todos los productos pertenecientes a dicha categoría
-**POST**
-    - "/": crea un nuevo producto. Son requeridos nombre, descripcion, precio, foto, stock, categoria
-**UPDATE**
-    - "/:id": actualiza un producto con su id. Son requeridos nombre, descripcion, precio, foto, stock, categoria
-**DELETE**
-    - "/:id": elimina un producto con su id
+**GET**  
+    - "/:id?": en caso de que haya id busca el producto con dicho id, si no trae todos los productos  
+    - "/categoria/:cat": busca todos los productos pertenecientes a dicha categoría  
+**POST**  
+    - "/": crea un nuevo producto. Son requeridos nombre, descripcion, precio, foto, stock, categoria  
+**UPDATE**  
+    - "/:id": actualiza un producto con su id. Son requeridos nombre, descripcion, precio, foto, stock, categoria  
+**DELETE**  
+    - "/:id": elimina un producto con su id  
 
-### Carritos (todos comienzan con "api/carritos")
+### Carritos 
+Todos comienzan con "api/carritos"
     **GET**
     - "/:id/productos": trae los productos de un carrito con su id
     **POST**
