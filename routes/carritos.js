@@ -29,6 +29,14 @@ router.post('/', async (req, res) => {
     res.send(`Carrito creado con éxito con id: ${nuevoId._id}`)
 });
 
+router.get('/:comprador', async (req, res) => {
+    const comprador = req.params.comprador;
+    let carros = await carritos.getAll();
+    let carritosComprador = carros.filter(x => x.comprador == comprador);
+
+    res.send(carritosComprador);
+});
+
 router.delete('/:id', async (req, res) => {
     const id = req.params.id;
     await carritos.deleteById(id);
