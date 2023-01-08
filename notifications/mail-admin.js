@@ -1,8 +1,8 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
-const MY_EMAIL_ADDRESS = process.env.MY_EMAIL_ADDRESS || 'hollis79@ethereal.email';
-const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD || 'zBh4r3EmCusygYS1WP';
+const MY_EMAIL_ADDRESS = process.env.MY_EMAIL_ADDRESS || 'anderson.considine@ethereal.email';
+const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD || 'RvN4q4d2BsPDVkHWWc';
 
 const nodemailer = require("nodemailer");
 
