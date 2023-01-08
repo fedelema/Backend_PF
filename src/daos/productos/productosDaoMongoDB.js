@@ -6,7 +6,9 @@ const productoSchema = new Schema({
     descripcion: {type: String, required: true},
     precio: {type: Number, required: true},
     foto: {type: String, required: true},
-    stock: {type: Number, required: true}
+    stock: {type: Number, required: true},
+    cantidad: {type: Number, required: true},
+    categoria: {type: String, required: true}
 }, {timestamps: true});
 
 class ProductosDaoMongoDB extends ContenedorMongoDB {

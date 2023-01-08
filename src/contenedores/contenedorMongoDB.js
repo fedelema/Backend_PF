@@ -17,7 +17,7 @@ class ContenedorMongoDB {
 
     async getById (id) {
         //id = Types.ObjectId(id);
-        const doc = await this.model.findOne({comprador: id});
+        const doc = await this.model.findOne({_id: id});
         
         console.log(doc);
         return doc;
@@ -32,7 +32,7 @@ class ContenedorMongoDB {
 
     async deleteById(id) {
         //id = Types.ObjectId(id);
-        const result = await this.model.deleteOne({comprador: id});
+        const result = await this.model.deleteOne({_id: id});
 
         console.log(result);
         return result;
@@ -50,7 +50,7 @@ class ContenedorMongoDB {
         //console.log(result);
         //return result;
 
-        const result = await this.model.updateOne({comprador: id}, object);
+        const result = await this.model.updateOne({_id: id}, object);
         return result;
     }
 }

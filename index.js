@@ -15,6 +15,7 @@ const mailRegistro = require('./notifications/mail-admin');
 
 const routerProductos = require('./routes/productos');
 const routerCarritos = require('./routes/carritos');
+const routerOrdenes = require('./routes/ordenes');
 const routerSession = require('./routes/user');
 
 const connect = async () => {
@@ -40,7 +41,8 @@ passport.use("signup", new LocalStrategy({
     const { nombre, direccion, edad, interno, telefono } = req.body;
     const user = await User.findOne({ username });
     if (user) {
-        return done(new Error("User already exists."), null);
+        //return done(new Error("User already exists."), null);
+        return done(null, null, { message: "User already exists" });
     }
     const hashedPassword = hashPassword(password);
     const newUser = new User({ username, password: hashedPassword , nombre, direccion, edad, interno, telefono });
@@ -76,6 +78,7 @@ app.use(passport.session());
 app.use('/', routerSession);
 app.use('/api/productos', routerProductos);
 app.use('/api/carritos', routerCarritos);
+app.use('/api/ordenes', routerOrdenes);
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
