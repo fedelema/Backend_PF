@@ -10,7 +10,7 @@
 ## 1) Colecciones (MongoDB)
 En este proyecto se utilizan las siguientes colecciones de Mongo DB:
 
-    ### Productos
+### Productos
     - "_id": como clave única, la genera Mongo automáticamente (object)
     - "nombre": nombre del producto (string)
     - "descripcion": descripción del producto (string)
@@ -44,8 +44,7 @@ En este proyecto se utilizan las siguientes colecciones de Mongo DB:
     - "interno": código telefónico del país del usuario (number)
     - "telefono": número de teléfono del usuario, código de área incluído (number)
 
-### Sessions
-Se generan cuando el usuario se loguea y luego se destruyen
+### Sessions (se generan cuando el usuario se loguea y luego se destruyen)
     - "_id": como clave única, la genera Mongo automáticamente (object)
     - "expires": fecha y hora de expiración de la misma (date)
     - "session": datos de la cookie (string)
@@ -54,20 +53,19 @@ Se generan cuando el usuario se loguea y luego se destruyen
 ## 2) Endpoints
 Los endpoints de los users se pueden probar en el front; mientras que los de productos, carritos y ordenes se hacen desde el back
 
-### Productos
-Todos comienzan con "api/productos"
-    **GET**
+### Productos (todos comienzan con "api/productos")
+
+**GET**
     - "/:id?": en caso de que haya id busca el producto con dicho id, si no trae todos los productos
     - "/categoria/:cat": busca todos los productos pertenecientes a dicha categoría
-    **POST**
+**POST**
     - "/": crea un nuevo producto. Son requeridos nombre, descripcion, precio, foto, stock, categoria
-    **UPDATE**
+**UPDATE**
     - "/:id": actualiza un producto con su id. Son requeridos nombre, descripcion, precio, foto, stock, categoria
-    **DELETE**
+**DELETE**
     - "/:id": elimina un producto con su id
 
-### Carritos
-Todos comienzan con "api/carritos"
+### Carritos (todos comienzan con "api/carritos")
     **GET**
     - "/:id/productos": trae los productos de un carrito con su id
     **POST**
