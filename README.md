@@ -70,7 +70,7 @@ Todos comienzan con "api/productos"
 Todos comienzan con "api/carritos"  
 
 **GET**  
-    - "/:comprador": trae las carritos correspondientes a un comprador, con su mail
+    - "/:comprador": trae las carritos correspondientes a un comprador, con su mail  
     - "/:id/productos": trae los productos de un carrito con su id  
 **POST**  
     - "/": crea un nuevo carrito. Es requerido el comprador  
